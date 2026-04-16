@@ -1,0 +1,204 @@
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
+import {
+  FileText,
+  Heading,
+  AlignLeft,
+  ArrowLeftCircle,
+  SearchX,
+  CornerDownRight,
+  
+} from "lucide-static";
+
+const config: Config = {
+  title: 'Exgenix',
+  tagline: 'Test Exchange APIs Functionally & Performantly',
+  favicon: 'img/favicon.ico',
+
+  url: 'https://pramod915899.github.io',
+  baseUrl: '/exgenix-docs/',
+  organizationName: 'pramod915899',
+  projectName: 'exgenix-docs',
+  deploymentBranch: 'gh-pages',
+  trailingSlash: false,
+
+  onBrokenLinks: 'ignore',
+
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
+
+  presets: [
+    [
+      'classic',
+      {
+        docs: {
+          sidebarPath: './sidebars.ts',
+          breadcrumbs: false,
+
+          // ✅ These are VALID in v3
+
+          editUrl: undefined,
+        },
+        blog: {
+          showReadingTime: true,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          },
+          editUrl:
+            'https://github.com/exgenix/docs/edit/main/',
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
+        },
+        theme: {
+          customCss: [
+              require.resolve('./src/css/custom.css'),
+            ],
+        },
+  },
+    ],
+  ],
+
+
+//   plugins: [
+//   [
+//     require.resolve('@cmfcmf/docusaurus-search-local'),
+//     {
+//       indexDocs: true,
+//       indexBlog: true,
+//       indexPages: true,
+//       language: 'en',
+//     },
+//   ],
+// ],
+
+plugins: [
+  [
+    require.resolve("@easyops-cn/docusaurus-search-local"),
+    {
+      hashed: true,
+
+      language: ["en"],
+
+      // EXACT PHRASE MATCH MODE
+      removeDefaultStemmer: true,            // full-word, no stemming
+      removeDefaultStopWordFilter: true,     // do not ignore small words
+      searchResultContextMaxLength: 0,       // no fuzzy context expansion
+
+      highlightSearchTermsOnTargetPage: true,
+      explicitSearchResultPath: true,
+      indexDocs: true,
+      indexPages: true,
+      searchResultLimits: 7,
+    }
+  ]
+],
+
+
+
+
+scripts: [
+  '/js/imageExpand.js'
+],
+
+  themeConfig: {
+    image: 'img/exgenix.png',
+    // colorMode: {
+    //   respectPrefersColorScheme: true,
+    // },
+
+    colorMode: {
+  defaultMode: 'light',
+  disableSwitch: true,
+  respectPrefersColorScheme: false,
+},
+
+    navbar: {
+      title: 'Exgenix',
+      logo: {
+        alt: 'Exgenix Logo',
+        src: 'img/exgenix.png',
+      },
+      items: [
+        {
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Documentation',
+        },
+        {to: '/videos', label: 'Video References', position: 'left'},
+        {
+          href: 'https://app.exgenix.waynautic.com/',
+          label: 'Exgenix Platform',
+          position: 'right',
+        },
+        {
+        type: "search",
+        position: "right",
+        },
+      ],
+    },
+    hideTableOfContents: true,
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Documentation',
+          items: [
+             {
+              label: 'Exgenix Overview',
+              to: '/docs/exgenix',
+            },
+            {
+              label: 'Exgenix Trial Access',
+              to: '/docs/dbg-trial',
+            },
+            // {
+            //   label: 'Getting Started',
+            //   to: '/docs/quick-start-guide',
+            // },
+            {
+              label: 'Video References',
+              to: '/videos',
+            },
+          ],
+        },
+        {
+          title: 'Company',
+          items: [
+            // {
+            //   label: 'Home',
+            //   to: '/',
+            // },
+            {
+              label: 'Contact Us',
+              to: '/docs/contact-us',
+            },
+            {
+              label: 'Exgenix Platform',
+              href: 'https://app.exgenix.waynautic.com/',
+            },
+          ],
+        },
+      ],
+      copyright: '© 2025 Exgenix Technologies.<br/>Empowering intelligent QA for the world’s financial systems.',
+
+    },
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+    },
+  } satisfies Preset.ThemeConfig,
+};
+
+export default config;
